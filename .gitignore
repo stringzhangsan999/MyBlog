@@ -1,0 +1,8 @@
+z321/.deploy_git
+z321/.gitignore
+z321/node_modules
+z321/public
+z321/themes
+**/*.jpg
+**/*.png
+**/*.gif
