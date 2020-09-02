@@ -10,7 +10,7 @@ description: POI是java一个操作文档的一个工具，常用于操作excel
 
 ## POI是什么
 
-  **(1)Apache POI是[Apache软件基金会](https://baike.baidu.com/item/Apache软件基金会)的开放源码函式库，POI提供API给Java程序对Microsoft Office格式档案读和写的功能 **
+  **(1)Apache POI是[Apache软件基金会](https://baike.baidu.com/item/Apache软件基金会)的开放源码函式库，POI提供API给Java程序对Microsoft Office格式档案读和写的功能** 
 
 **(2)POI结构说明**
 
@@ -217,7 +217,7 @@ description: POI是java一个操作文档的一个工具，常用于操作excel
 }
 ```
 
-**（2）导入excel数据** 
+**(2)导入excel数据**
 
 **核心操作：**
 
@@ -341,7 +341,7 @@ description: POI是java一个操作文档的一个工具，常用于操作excel
 **<font color='red'>附上：判断获取单元格类型的代码 可能代码有些许问题没有进行亲测但是这个判断条件应该加上去这样会提高代码健壮性</font>**
 
 ```java
-public static Object getJavaValue(XSSFCell cell) {
+public static Object getJavaValue(XSSFCell cell) {//XSSFCell主要针对的是XLSX
          Object o = null;
          int cellType = cell.getCellType();
         switch (cellType) {
@@ -375,5 +375,42 @@ public static Object getJavaValue(XSSFCell cell) {
          }
          return o;
      }
+
+public static Object CheckCell(Cell cell) {//Cell主要针对的是xls
+		  Object o = null;
+	         int cellType = cell.getCellType();
+	        switch (cellType) {
+	         case Cell.CELL_TYPE_BLANK:
+	        	 o="";
+	             break; 
+	         case Cell.CELL_TYPE_BOOLEAN:
+	              o=cell.getBooleanCellValue();
+	              break;
+	      
+	         case Cell.CELL_TYPE_ERROR:
+	        	 o="Bad Value";
+	        	 break;
+	         case Cell.CELL_TYPE_NUMERIC:
+	        	 o=cell.getNumericCellValue();
+	        	 break;
+	         case Cell.CELL_TYPE_FORMULA:
+	             try {
+	                 o = cell.getNumericCellValue();
+	             } catch (IllegalStateException e) {
+	                try {
+	                     o = cell.getRichStringCellValue().toString();
+	                 } catch (IllegalStateException e2) {
+	                     o = cell.getErrorCellValue();
+	                 }
+	             } catch (Exception e) {
+	                 e.printStackTrace();
+	             }
+	             break;           
+	         default:
+	             o = cell.getRichStringCellValue().getString();
+	         }
+	         return o;
+		
+	}
 ```
 
