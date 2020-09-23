@@ -242,7 +242,7 @@ theme_config:
 deploy:
   type: 'git'
   #repo: https://github.com/stringzhangsan999/stringzhangsan999.github.io
-  repo: git@47.111.239.85:/home/git/blog.git 
+  repo: git@47.96.227.161:/home/git/blog.git 
   branch: master
 
 
