@@ -114,5 +114,20 @@ hexo new [layout] 文章名称   #新建文章格式
 
 
 
+##  如何让markdown流程图在服务器上能正常显示
 
+ 会发现hexo启动服务器时并不能正常显示流程图，hexo博客系统因为默认是不支持流程图的
 
+网上分享的插件有 hexo-filter-mermaid-diagrams 可以正常显示流程图
+
+[插件地址](  https://github.com/webappdevelp/hexo-filter-mermaid-diagrams  )
+
+安装命令：
+
+> yarn add hexo-filter-mermaid-diagrams
+
+如果没有安装yarn先安装yarn
+
+>  npm install -g yarn 
+
+[剩下参考别的博客]( https://www.liuyude.com/How_to_make_your_HEXO_blog_support_handwriting_flowchart.html )
